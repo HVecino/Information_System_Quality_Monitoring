@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateAtributoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateAtributoLabel_idAtributos}" for="idAtributos" />
+                    <h:inputText id="idAtributos" value="#{atributoController.selected.idAtributos}" title="#{bundle.CreateAtributoTitle_idAtributos}" required="true" requiredMessage="#{bundle.CreateAtributoRequiredMessage_idAtributos}"/>
+                    <h:outputLabel value="#{bundle.CreateAtributoLabel_nombreAtributo}" for="nombreAtributo" />
+                    <h:inputText id="nombreAtributo" value="#{atributoController.selected.nombreAtributo}" title="#{bundle.CreateAtributoTitle_nombreAtributo}" required="true" requiredMessage="#{bundle.CreateAtributoRequiredMessage_nombreAtributo}"/>
+                    <h:outputLabel value="#{bundle.CreateAtributoLabel_valorAtributo}" for="valorAtributo" />
+                    <h:inputText id="valorAtributo" value="#{atributoController.selected.valorAtributo}" title="#{bundle.CreateAtributoTitle_valorAtributo}" required="true" requiredMessage="#{bundle.CreateAtributoRequiredMessage_valorAtributo}"/>
+                    <h:outputLabel value="#{bundle.CreateAtributoLabel_idCategorias}" for="idCategorias" />
+                    <h:selectOneMenu id="idCategorias" value="#{atributoController.selected.idCategorias}" title="#{bundle.CreateAtributoTitle_idCategorias}" required="true" requiredMessage="#{bundle.CreateAtributoRequiredMessage_idCategorias}">
+                        <f:selectItems value="#{categoriaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateAtributoLabel_idEstados}" for="idEstados" />
+                    <h:selectOneMenu id="idEstados" value="#{atributoController.selected.idEstados}" title="#{bundle.CreateAtributoTitle_idEstados}" required="true" requiredMessage="#{bundle.CreateAtributoRequiredMessage_idEstados}">
+                        <f:selectItems value="#{estadoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateAtributoLabel_idTipoAtributo}" for="idTipoAtributo" />
+                    <h:selectOneMenu id="idTipoAtributo" value="#{atributoController.selected.idTipoAtributo}" title="#{bundle.CreateAtributoTitle_idTipoAtributo}" required="true" requiredMessage="#{bundle.CreateAtributoRequiredMessage_idTipoAtributo}">
+                        <f:selectItems value="#{tipoatributoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{atributoController.create}" value="#{bundle.CreateAtributoSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{atributoController.prepareList}" value="#{bundle.CreateAtributoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateAtributoIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

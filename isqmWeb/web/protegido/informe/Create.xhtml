@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateInformeTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateInformeLabel_fechaCapacitacion}" for="fechaCapacitacion" />
+                    <h:inputText id="fechaCapacitacion" value="#{informeController.selected.fechaCapacitacion}" title="#{bundle.CreateInformeTitle_fechaCapacitacion}" required="true" requiredMessage="#{bundle.CreateInformeRequiredMessage_fechaCapacitacion}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateInformeLabel_capacitacion}" for="capacitacion" />
+                    <h:selectOneMenu id="capacitacion" value="#{informeController.selected.capacitacion}" title="#{bundle.CreateInformeTitle_capacitacion}" required="true" requiredMessage="#{bundle.CreateInformeRequiredMessage_capacitacion}">
+                        <f:selectItems value="#{capacitacionController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateInformeLabel_monitoreo}" for="monitoreo" />
+                    <h:selectOneMenu id="monitoreo" value="#{informeController.selected.monitoreo}" title="#{bundle.CreateInformeTitle_monitoreo}" required="true" requiredMessage="#{bundle.CreateInformeRequiredMessage_monitoreo}">
+                        <f:selectItems value="#{monitoreoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{informeController.create}" value="#{bundle.CreateInformeSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{informeController.prepareList}" value="#{bundle.CreateInformeShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateInformeIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

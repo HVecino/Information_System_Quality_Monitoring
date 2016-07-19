@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateCategoriaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateCategoriaLabel_idCategorias}" for="idCategorias" />
+                    <h:inputText id="idCategorias" value="#{categoriaController.selected.idCategorias}" title="#{bundle.CreateCategoriaTitle_idCategorias}" required="true" requiredMessage="#{bundle.CreateCategoriaRequiredMessage_idCategorias}"/>
+                    <h:outputLabel value="#{bundle.CreateCategoriaLabel_nombreCategoria}" for="nombreCategoria" />
+                    <h:inputText id="nombreCategoria" value="#{categoriaController.selected.nombreCategoria}" title="#{bundle.CreateCategoriaTitle_nombreCategoria}" required="true" requiredMessage="#{bundle.CreateCategoriaRequiredMessage_nombreCategoria}"/>
+                    <h:outputLabel value="#{bundle.CreateCategoriaLabel_valorCategoria}" for="valorCategoria" />
+                    <h:inputText id="valorCategoria" value="#{categoriaController.selected.valorCategoria}" title="#{bundle.CreateCategoriaTitle_valorCategoria}" required="true" requiredMessage="#{bundle.CreateCategoriaRequiredMessage_valorCategoria}"/>
+                    <h:outputLabel value="#{bundle.CreateCategoriaLabel_idEstados}" for="idEstados" />
+                    <h:selectOneMenu id="idEstados" value="#{categoriaController.selected.idEstados}" title="#{bundle.CreateCategoriaTitle_idEstados}" required="true" requiredMessage="#{bundle.CreateCategoriaRequiredMessage_idEstados}">
+                        <f:selectItems value="#{estadoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateCategoriaLabel_idPlantillas}" for="idPlantillas" />
+                    <h:selectOneMenu id="idPlantillas" value="#{categoriaController.selected.idPlantillas}" title="#{bundle.CreateCategoriaTitle_idPlantillas}" required="true" requiredMessage="#{bundle.CreateCategoriaRequiredMessage_idPlantillas}">
+                        <f:selectItems value="#{plantillaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{categoriaController.create}" value="#{bundle.CreateCategoriaSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{categoriaController.prepareList}" value="#{bundle.CreateCategoriaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateCategoriaIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

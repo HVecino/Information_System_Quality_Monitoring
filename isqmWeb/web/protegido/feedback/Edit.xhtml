@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditFeedbackTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditFeedbackLabel_idFeedbacks}" for="idFeedbacks" />
+                    <h:inputText id="idFeedbacks" value="#{feedbackController.selected.idFeedbacks}" title="#{bundle.EditFeedbackTitle_idFeedbacks}" required="true" requiredMessage="#{bundle.EditFeedbackRequiredMessage_idFeedbacks}"/>
+                    <h:outputLabel value="#{bundle.EditFeedbackLabel_fechaFeedback}" for="fechaFeedback" />
+                    <h:inputText id="fechaFeedback" value="#{feedbackController.selected.fechaFeedback}" title="#{bundle.EditFeedbackTitle_fechaFeedback}" required="true" requiredMessage="#{bundle.EditFeedbackRequiredMessage_fechaFeedback}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditFeedbackLabel_recomendacion}" for="recomendacion" />
+                    <h:inputTextarea rows="4" cols="30" id="recomendacion" value="#{feedbackController.selected.recomendacion}" title="#{bundle.EditFeedbackTitle_recomendacion}" required="true" requiredMessage="#{bundle.EditFeedbackRequiredMessage_recomendacion}"/>
+                    <h:outputLabel value="#{bundle.EditFeedbackLabel_idEstados}" for="idEstados" />
+                    <h:selectOneMenu id="idEstados" value="#{feedbackController.selected.idEstados}" title="#{bundle.EditFeedbackTitle_idEstados}" required="true" requiredMessage="#{bundle.EditFeedbackRequiredMessage_idEstados}">
+                        <f:selectItems value="#{estadoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditFeedbackLabel_idMonitoreos}" for="idMonitoreos" />
+                    <h:selectOneMenu id="idMonitoreos" value="#{feedbackController.selected.idMonitoreos}" title="#{bundle.EditFeedbackTitle_idMonitoreos}" required="true" requiredMessage="#{bundle.EditFeedbackRequiredMessage_idMonitoreos}">
+                        <f:selectItems value="#{monitoreoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{feedbackController.update}" value="#{bundle.EditFeedbackSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditFeedbackViewLink}"/>
+                <br />
+                <h:commandLink action="#{feedbackController.prepareList}" value="#{bundle.EditFeedbackShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditFeedbackIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

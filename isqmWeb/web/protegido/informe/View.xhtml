@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewInformeTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewInformeLabel_fechaCapacitacion}"/>
+                    <h:outputText value="#{informeController.selected.fechaCapacitacion}" title="#{bundle.ViewInformeTitle_fechaCapacitacion}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewInformeLabel_capacitacion}"/>
+                    <h:outputText value="#{informeController.selected.capacitacion}" title="#{bundle.ViewInformeTitle_capacitacion}"/>
+                    <h:outputText value="#{bundle.ViewInformeLabel_monitoreo}"/>
+                    <h:outputText value="#{informeController.selected.monitoreo}" title="#{bundle.ViewInformeTitle_monitoreo}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{informeController.destroyAndView}" value="#{bundle.ViewInformeDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewInformeEditLink}"/>
+                <br />
+                <h:commandLink action="#{informeController.prepareCreate}" value="#{bundle.ViewInformeCreateLink}" />
+                <br />
+                <h:commandLink action="#{informeController.prepareList}" value="#{bundle.ViewInformeShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewInformeIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

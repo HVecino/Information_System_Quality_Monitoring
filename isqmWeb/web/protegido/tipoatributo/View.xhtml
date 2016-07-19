@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewTipoatributoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewTipoatributoLabel_idTipoAtributo}"/>
+                    <h:outputText value="#{tipoatributoController.selected.idTipoAtributo}" title="#{bundle.ViewTipoatributoTitle_idTipoAtributo}"/>
+                    <h:outputText value="#{bundle.ViewTipoatributoLabel_nombreTipoAtributo}"/>
+                    <h:outputText value="#{tipoatributoController.selected.nombreTipoAtributo}" title="#{bundle.ViewTipoatributoTitle_nombreTipoAtributo}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{tipoatributoController.destroyAndView}" value="#{bundle.ViewTipoatributoDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewTipoatributoEditLink}"/>
+                <br />
+                <h:commandLink action="#{tipoatributoController.prepareCreate}" value="#{bundle.ViewTipoatributoCreateLink}" />
+                <br />
+                <h:commandLink action="#{tipoatributoController.prepareList}" value="#{bundle.ViewTipoatributoShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewTipoatributoIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

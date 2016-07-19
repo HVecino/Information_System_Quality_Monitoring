@@ -1,0 +1,132 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <head>
+        <meta charset="UTF-8"></meta>
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"></meta> <!-- meta:vp+tab-->
+        <title>Contáctenos</title>
+        <link href="resources/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <link href="resources/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+        <link href="resources/css/estilosISQM.css" rel="stylesheet" type="text/css"/>
+        <style type="text/css">
+            .caja {
+                border: 1px solid white;
+                min-height: 358px;
+                padding-right: 15px;
+                padding-left: 15px;
+                padding-top: 20px;
+                margin-right: auto;
+                margin-left: auto;
+                background-color: white;
+                color: gray;
+            }
+            .control-label{
+                text-align: right;
+            }
+        </style>
+
+    </head>
+    <body>
+        <div class="container"> 
+            <header> 
+                <img src="resources/images/LogoHorizontalBlanco2.png" alt="" class="img-responsive pull-left" height="100" width="400"/>
+
+
+                <img src="resources/images/mesaTrabajo.png" alt="" height="100" width="240" class="img-responsive pull-right"/>
+            </header>
+            <nav class="navbar navbar-inverse">
+                <div class="container-fluid">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                         <a class="navbar-brand" href="login.xhtml">Inicio</a>
+                    </div>
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav">
+                             <li><a href="Quienes Somos.xhtml">Quiénes Somos?</a></li>
+                              <li><a href="Mision y Vision.xhtml">Misión y Visión</a></li>
+                              <li><a href="Contactenos.xhtml">Contáctenos</a></li>
+
+                        </ul>
+                    </div><!-- /.navbar-collapse -->
+                </div><!-- /.container-fluid -->
+            </nav>
+
+            <!-- Inicio mi formulario -->
+            <section>
+
+                <div class="row"> <!-- esto me genera un espacio-->
+                    <div class="col-md-7 caja"> 
+
+                        <form class="form-horizontal">
+                            <fieldset>
+
+                                <!-- Form Name -->
+                                <legend id="contact" >Contactenos </legend>
+
+                                <!-- Text input-->
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="textinputName">Nombre</label>  
+                                    <div class="col-md-4">
+                                        <input id="textinputName" name="textinputName" type="text" placeholder="Ejemplo: Juan Diego" class="form-control input-md"></input>
+
+                                    </div>
+                                </div>
+
+                                <!-- Text input-->
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="textinputApellido">Apellidos</label>  
+                                    <div class="col-md-4">
+                                        <input id="textinputApellido" name="textinputApellido" type="text" placeholder="Ejemplo: Granados Rojas" class="form-control input-md"></input>
+
+                                    </div>
+                                </div>
+
+                                <!-- Text input-->
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="textinputCorreoElectronico">Correo Electrónico</label>  
+                                    <div class="col-md-4">
+                                        <input id="textinputCorreoElectronico" name="textinputCorreoElectronico" type="text" placeholder="Ejemplo: juandi@gmail.com" class="form-control input-md"></input>
+
+                                    </div>
+                                </div>
+
+                                <!-- Textarea -->
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="textComentario">Comentario</label>
+                                    <div class="col-md-4">                     
+                                        <textarea class="form-control" id="textComentario" name="textComentario">Escriba aquí su mensaje</textarea>
+                                        
+                                    </div>
+                                </div>
+
+                                <!-- Button -->
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="singlebutton"></label>
+                                    <div class="col-md-4">
+                                        <button id="singlebutton" name="singlebutton" class="btn btn-inverse">Enviar</button>
+                                    </div>
+                                </div>
+
+                            </fieldset>
+                        </form>
+
+                    </div>
+
+                    <div class="col-md-5 cajaMapa">
+                    </div></div>
+
+            </section>
+            <!-- Fin finalizo  -->
+            <footer>
+                <div> 
+                    <ul>
+                        <li>Copyright © 2015 ISQM LLC. Todos los derechos reservados. El nombre y el logo de ISQM son marcas registradas.</li>
+                    </ul>
+                </div>
+            </footer>
+        </div>  
+        <script src="js/jquery-2.1.0.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+    </body>
+</html>

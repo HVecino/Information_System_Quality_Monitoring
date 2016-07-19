@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditTipoatributoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditTipoatributoLabel_idTipoAtributo}" for="idTipoAtributo" />
+                    <h:inputText id="idTipoAtributo" value="#{tipoatributoController.selected.idTipoAtributo}" title="#{bundle.EditTipoatributoTitle_idTipoAtributo}" required="true" requiredMessage="#{bundle.EditTipoatributoRequiredMessage_idTipoAtributo}"/>
+                    <h:outputLabel value="#{bundle.EditTipoatributoLabel_nombreTipoAtributo}" for="nombreTipoAtributo" />
+                    <h:inputText id="nombreTipoAtributo" value="#{tipoatributoController.selected.nombreTipoAtributo}" title="#{bundle.EditTipoatributoTitle_nombreTipoAtributo}" required="true" requiredMessage="#{bundle.EditTipoatributoRequiredMessage_nombreTipoAtributo}"/>
+                </h:panelGrid>
+                <h:commandLink action="#{tipoatributoController.update}" value="#{bundle.EditTipoatributoSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditTipoatributoViewLink}"/>
+                <br />
+                <h:commandLink action="#{tipoatributoController.prepareList}" value="#{bundle.EditTipoatributoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditTipoatributoIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

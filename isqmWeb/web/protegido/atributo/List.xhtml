@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListAtributoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListAtributoEmpty}" rendered="#{atributoController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{atributoController.items.rowCount > 0}">
+                    <h:outputText value="#{atributoController.pagination.pageFirstItem + 1}..#{atributoController.pagination.pageLastItem + 1}/#{atributoController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{atributoController.previous}" value="#{bundle.Previous} #{atributoController.pagination.pageSize}" rendered="#{atributoController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{atributoController.next}" value="#{bundle.Next} #{atributoController.pagination.pageSize}" rendered="#{atributoController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{atributoController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAtributoTitle_idAtributos}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idAtributos}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAtributoTitle_nombreAtributo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nombreAtributo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAtributoTitle_valorAtributo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.valorAtributo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAtributoTitle_idCategorias}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idCategorias}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAtributoTitle_idEstados}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idEstados}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAtributoTitle_idTipoAtributo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idTipoAtributo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{atributoController.prepareView}" value="#{bundle.ListAtributoViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{atributoController.prepareEdit}" value="#{bundle.ListAtributoEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{atributoController.destroy}" value="#{bundle.ListAtributoDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{atributoController.prepareCreate}" value="#{bundle.ListAtributoCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListAtributoIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

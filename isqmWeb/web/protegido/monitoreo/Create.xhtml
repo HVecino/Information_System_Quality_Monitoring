@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateMonitoreoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateMonitoreoLabel_idMonitoreos}" for="idMonitoreos" />
+                    <h:inputText id="idMonitoreos" value="#{monitoreoController.selected.idMonitoreos}" title="#{bundle.CreateMonitoreoTitle_idMonitoreos}" required="true" requiredMessage="#{bundle.CreateMonitoreoRequiredMessage_idMonitoreos}"/>
+                    <h:outputLabel value="#{bundle.CreateMonitoreoLabel_fechaMonitoreo}" for="fechaMonitoreo" />
+                    <h:inputText id="fechaMonitoreo" value="#{monitoreoController.selected.fechaMonitoreo}" title="#{bundle.CreateMonitoreoTitle_fechaMonitoreo}" required="true" requiredMessage="#{bundle.CreateMonitoreoRequiredMessage_fechaMonitoreo}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateMonitoreoLabel_calificacionMonitoreo}" for="calificacionMonitoreo" />
+                    <h:inputText id="calificacionMonitoreo" value="#{monitoreoController.selected.calificacionMonitoreo}" title="#{bundle.CreateMonitoreoTitle_calificacionMonitoreo}" required="true" requiredMessage="#{bundle.CreateMonitoreoRequiredMessage_calificacionMonitoreo}"/>
+                    <h:outputLabel value="#{bundle.CreateMonitoreoLabel_transcripcion}" for="transcripcion" />
+                    <h:inputText id="transcripcion" value="#{monitoreoController.selected.transcripcion}" title="#{bundle.CreateMonitoreoTitle_transcripcion}" required="true" requiredMessage="#{bundle.CreateMonitoreoRequiredMessage_transcripcion}"/>
+                    <h:outputLabel value="#{bundle.CreateMonitoreoLabel_idEstados}" for="idEstados" />
+                    <h:selectOneMenu id="idEstados" value="#{monitoreoController.selected.idEstados}" title="#{bundle.CreateMonitoreoTitle_idEstados}" required="true" requiredMessage="#{bundle.CreateMonitoreoRequiredMessage_idEstados}">
+                        <f:selectItems value="#{estadoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateMonitoreoLabel_idPlantillas}" for="idPlantillas" />
+                    <h:selectOneMenu id="idPlantillas" value="#{monitoreoController.selected.idPlantillas}" title="#{bundle.CreateMonitoreoTitle_idPlantillas}" required="true" requiredMessage="#{bundle.CreateMonitoreoRequiredMessage_idPlantillas}">
+                        <f:selectItems value="#{plantillaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateMonitoreoLabel_idAnalistaDeCalidad}" for="idAnalistaDeCalidad" />
+                    <h:selectOneMenu id="idAnalistaDeCalidad" value="#{monitoreoController.selected.idAnalistaDeCalidad}" title="#{bundle.CreateMonitoreoTitle_idAnalistaDeCalidad}" required="true" requiredMessage="#{bundle.CreateMonitoreoRequiredMessage_idAnalistaDeCalidad}">
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateMonitoreoLabel_idAsesor}" for="idAsesor" />
+                    <h:selectOneMenu id="idAsesor" value="#{monitoreoController.selected.idAsesor}" title="#{bundle.CreateMonitoreoTitle_idAsesor}" required="true" requiredMessage="#{bundle.CreateMonitoreoRequiredMessage_idAsesor}">
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{monitoreoController.create}" value="#{bundle.CreateMonitoreoSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{monitoreoController.prepareList}" value="#{bundle.CreateMonitoreoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateMonitoreoIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

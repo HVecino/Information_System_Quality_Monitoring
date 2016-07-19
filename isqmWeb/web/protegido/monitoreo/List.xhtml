@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListMonitoreoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListMonitoreoEmpty}" rendered="#{monitoreoController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{monitoreoController.items.rowCount > 0}">
+                    <h:outputText value="#{monitoreoController.pagination.pageFirstItem + 1}..#{monitoreoController.pagination.pageLastItem + 1}/#{monitoreoController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{monitoreoController.previous}" value="#{bundle.Previous} #{monitoreoController.pagination.pageSize}" rendered="#{monitoreoController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{monitoreoController.next}" value="#{bundle.Next} #{monitoreoController.pagination.pageSize}" rendered="#{monitoreoController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{monitoreoController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMonitoreoTitle_idMonitoreos}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idMonitoreos}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMonitoreoTitle_fechaMonitoreo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechaMonitoreo}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMonitoreoTitle_calificacionMonitoreo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.calificacionMonitoreo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMonitoreoTitle_transcripcion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.transcripcion}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMonitoreoTitle_idEstados}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idEstados}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMonitoreoTitle_idPlantillas}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idPlantillas}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMonitoreoTitle_idAnalistaDeCalidad}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idAnalistaDeCalidad}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMonitoreoTitle_idAsesor}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idAsesor}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{monitoreoController.prepareView}" value="#{bundle.ListMonitoreoViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{monitoreoController.prepareEdit}" value="#{bundle.ListMonitoreoEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{monitoreoController.destroy}" value="#{bundle.ListMonitoreoDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{monitoreoController.prepareCreate}" value="#{bundle.ListMonitoreoCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListMonitoreoIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

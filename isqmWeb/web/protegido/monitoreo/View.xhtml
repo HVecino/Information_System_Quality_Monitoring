@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewMonitoreoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewMonitoreoLabel_idMonitoreos}"/>
+                    <h:outputText value="#{monitoreoController.selected.idMonitoreos}" title="#{bundle.ViewMonitoreoTitle_idMonitoreos}"/>
+                    <h:outputText value="#{bundle.ViewMonitoreoLabel_fechaMonitoreo}"/>
+                    <h:outputText value="#{monitoreoController.selected.fechaMonitoreo}" title="#{bundle.ViewMonitoreoTitle_fechaMonitoreo}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewMonitoreoLabel_calificacionMonitoreo}"/>
+                    <h:outputText value="#{monitoreoController.selected.calificacionMonitoreo}" title="#{bundle.ViewMonitoreoTitle_calificacionMonitoreo}"/>
+                    <h:outputText value="#{bundle.ViewMonitoreoLabel_transcripcion}"/>
+                    <h:outputText value="#{monitoreoController.selected.transcripcion}" title="#{bundle.ViewMonitoreoTitle_transcripcion}"/>
+                    <h:outputText value="#{bundle.ViewMonitoreoLabel_idEstados}"/>
+                    <h:outputText value="#{monitoreoController.selected.idEstados}" title="#{bundle.ViewMonitoreoTitle_idEstados}"/>
+                    <h:outputText value="#{bundle.ViewMonitoreoLabel_idPlantillas}"/>
+                    <h:outputText value="#{monitoreoController.selected.idPlantillas}" title="#{bundle.ViewMonitoreoTitle_idPlantillas}"/>
+                    <h:outputText value="#{bundle.ViewMonitoreoLabel_idAnalistaDeCalidad}"/>
+                    <h:outputText value="#{monitoreoController.selected.idAnalistaDeCalidad}" title="#{bundle.ViewMonitoreoTitle_idAnalistaDeCalidad}"/>
+                    <h:outputText value="#{bundle.ViewMonitoreoLabel_idAsesor}"/>
+                    <h:outputText value="#{monitoreoController.selected.idAsesor}" title="#{bundle.ViewMonitoreoTitle_idAsesor}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{monitoreoController.destroyAndView}" value="#{bundle.ViewMonitoreoDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewMonitoreoEditLink}"/>
+                <br />
+                <h:commandLink action="#{monitoreoController.prepareCreate}" value="#{bundle.ViewMonitoreoCreateLink}" />
+                <br />
+                <h:commandLink action="#{monitoreoController.prepareList}" value="#{bundle.ViewMonitoreoShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewMonitoreoIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

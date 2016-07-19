@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreatePlantillaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreatePlantillaLabel_idPlantillas}" for="idPlantillas" />
+                    <h:inputText id="idPlantillas" value="#{plantillaController.selected.idPlantillas}" title="#{bundle.CreatePlantillaTitle_idPlantillas}" required="true" requiredMessage="#{bundle.CreatePlantillaRequiredMessage_idPlantillas}"/>
+                    <h:outputLabel value="#{bundle.CreatePlantillaLabel_nombrePlantilla}" for="nombrePlantilla" />
+                    <h:inputText id="nombrePlantilla" value="#{plantillaController.selected.nombrePlantilla}" title="#{bundle.CreatePlantillaTitle_nombrePlantilla}" required="true" requiredMessage="#{bundle.CreatePlantillaRequiredMessage_nombrePlantilla}"/>
+                    <h:outputLabel value="#{bundle.CreatePlantillaLabel_fechaCreacionPlantilla}" for="fechaCreacionPlantilla" />
+                    <h:inputText id="fechaCreacionPlantilla" value="#{plantillaController.selected.fechaCreacionPlantilla}" title="#{bundle.CreatePlantillaTitle_fechaCreacionPlantilla}" required="true" requiredMessage="#{bundle.CreatePlantillaRequiredMessage_fechaCreacionPlantilla}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreatePlantillaLabel_valorPlantilla}" for="valorPlantilla" />
+                    <h:inputText id="valorPlantilla" value="#{plantillaController.selected.valorPlantilla}" title="#{bundle.CreatePlantillaTitle_valorPlantilla}" required="true" requiredMessage="#{bundle.CreatePlantillaRequiredMessage_valorPlantilla}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{plantillaController.create}" value="#{bundle.CreatePlantillaSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{plantillaController.prepareList}" value="#{bundle.CreatePlantillaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreatePlantillaIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
